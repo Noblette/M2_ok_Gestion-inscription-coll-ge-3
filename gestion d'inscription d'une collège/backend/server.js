@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import classeRoutes from "./routes/classeRoutes.js";
@@ -9,7 +8,7 @@ import inscriptionRoutes from "./routes/inscriptionRoutes.js";
 import usersRoutes from "./routes/users.js"; // À ajouter
 
 
-dotenv.config();
+
 //connectDB();
 
 const app = express();
