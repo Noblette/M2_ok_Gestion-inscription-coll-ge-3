@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecole-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecole-backend
+  template:
+    metadata:
+      labels:
+        app: ecole-backend
+    spec:
+      containers:
+      - name: ecole-backend
+        image: gcr.io/ecole-kubernetes/ecole-backend:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          value: "mongodb+srv://camera:tsyHaiko123@cluster0.rfmwgc7.mongodb.net/ecole?retryWrites=true&w=majority"
+        - name: JWT_SECRET
+          value: "1y0WWYyYXhYXb+ebNNWNdjnW8+AdZX7n9MequG0BnWk="
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecole-backend-service
+spec:
+  selector:
+    app: ecole-backend
+  ports:
+  - port: 80
+    targetPort: 5000
+  type: LoadBalancer
