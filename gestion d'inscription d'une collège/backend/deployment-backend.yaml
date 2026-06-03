@@ -17,6 +17,11 @@ spec:
         image: gcr.io/ecole-kubernetes/ecole-backend:latest
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "500m"
         env:
         - name: MONGO_URI
           value: "mongodb+srv://camera:tsyHaiko123@cluster0.rfmwgc7.mongodb.net/ecole?retryWrites=true&w=majority"
